@@ -1,15 +1,12 @@
--- Creating the database
 CREATE DATABASE SchoolManagement;
 USE SchoolManagement;
 
--- Creating the Classroom table
 CREATE TABLE Classroom (
     ClassroomID INT PRIMARY KEY,
     ClassroomName VARCHAR(50),
     Capacity INT
 );
 
--- Creating the Teacher table
 CREATE TABLE Teacher (
     TeacherID INT PRIMARY KEY,
     Name VARCHAR(100),
@@ -18,7 +15,6 @@ CREATE TABLE Teacher (
     Specialization VARCHAR(50)
 );
 
--- Creating the Course table
 CREATE TABLE Course (
     CourseID INT PRIMARY KEY,
     CourseName VARCHAR(100),
@@ -26,7 +22,6 @@ CREATE TABLE Course (
     FOREIGN KEY (TeacherID) REFERENCES Teacher(TeacherID)
 );
 
--- Creating the Student table
 CREATE TABLE Student (
     StudentID INT PRIMARY KEY,
     Name VARCHAR(100),
@@ -36,7 +31,6 @@ CREATE TABLE Student (
     FOREIGN KEY (ClassroomID) REFERENCES Classroom(ClassroomID)
 );
 
--- Creating the Attendance table
 CREATE TABLE Attendance (
     AttendanceID INT PRIMARY KEY,
     StudentID INT,
@@ -47,7 +41,6 @@ CREATE TABLE Attendance (
     FOREIGN KEY (CourseID) REFERENCES Course(CourseID)
 );
 
--- Inserting sample data into Classroom
 INSERT INTO Classroom (ClassroomID, ClassroomName, Capacity) VALUES
 (1, 'Grade 1 - A', 30),
 (2, 'Grade 1 - B', 28),
@@ -55,7 +48,6 @@ INSERT INTO Classroom (ClassroomID, ClassroomName, Capacity) VALUES
 (4, 'Grade 2 - B', 29),
 (5, 'Grade 3 - A', 31);
 
--- Inserting sample data into Teacher
 INSERT INTO Teacher (TeacherID, Name, Email, PhoneNumber, Specialization) VALUES
 (101, 'John Smith', 'john.smith@example.com', '123-456-7890', 'Mathematics'),
 (102, 'Jane Doe', 'jane.doe@example.com', '987-654-3210', 'English'),
@@ -63,7 +55,6 @@ INSERT INTO Teacher (TeacherID, Name, Email, PhoneNumber, Specialization) VALUES
 (104, 'Emily Clark', 'emily.clark@example.com', '444-555-6666', 'History'),
 (105, 'Michael Johnson', 'michael.johnson@example.com', '111-222-3333', 'Physics');
 
--- Inserting sample data into Course
 INSERT INTO Course (CourseID, CourseName, TeacherID) VALUES
 (201, 'Algebra I', 101),
 (202, 'Grammar Basics', 102),
@@ -71,7 +62,6 @@ INSERT INTO Course (CourseID, CourseName, TeacherID) VALUES
 (204, 'World History', 104),
 (205, 'Introduction to Physics', 105);
 
--- Inserting sample data into Student
 INSERT INTO Student (StudentID, Name, DateOfBirth, Gender, ClassroomID) VALUES
 (301, 'Alice Johnson', '2012-05-10', 'Female', 1),
 (302, 'David Williams', '2011-07-22', 'Male', 2),
@@ -79,7 +69,6 @@ INSERT INTO Student (StudentID, Name, DateOfBirth, Gender, ClassroomID) VALUES
 (304, 'James Anderson', '2011-09-30', 'Male', 4),
 (305, 'Olivia Thomas', '2012-01-25', 'Female', 5);
 
--- Inserting sample data into Attendance
 INSERT INTO Attendance (AttendanceID, StudentID, CourseID, Date, Status) VALUES
 (401, 301, 201, '2025-02-12', 'Present'),
 (402, 302, 202, '2025-02-12', 'Absent'),
